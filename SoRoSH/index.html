@@ -1,1 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Name — Anav Vaidya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --accent: #3B6DD4;
+      --accent-light: #1a2a4a;
+      --accent-dark: #a8c0f0;
+      --bg: #0d0d0d;
+      --bg-card: #161616;
+      --text-primary: #f0ede8;
+      --text-secondary: #a09e98;
+      --text-tertiary: #6a6860;
+      --border: rgba(255,255,255,0.10);
+      --border-strong: rgba(255,255,255,0.18);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Mono', monospace;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.1rem 0;
+    }
+
+    nav .inner {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-back {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-back:hover { color: var(--accent); }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 0.5px solid var(--border);
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.6px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    .hero-date {
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(28px, 6vw, 42px);
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-role {
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 0;
+    }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Description ── */
+    .description-block {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .description-block p + p {
+      margin-top: 0.85rem;
+    }
+
+    /* ── Media Grid ── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .media-item {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .media-item:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    /* Image slot — replace src with your image path */
+    .media-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video slot — replace src with your video path/URL */
+    .media-item video {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      background: #000;
+    }
+
+    /* YouTube / iframe embed slot */
+    .media-item .embed-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+    }
+
+    .media-item .embed-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .media-caption {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      padding: 0.6rem 0.9rem 0.75rem;
+      line-height: 1.5;
+    }
+
+    /* Full-width single media */
+    .media-item.full {
+      grid-column: 1 / -1;
+    }
+
+    /* ── PDF Report ── */
+    .pdf-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .pdf-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .pdf-card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .pdf-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+
+    .pdf-title {
+      font-size: 13px;
+      color: var(--text-primary);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pdf-subtitle {
+      font-size: 11px;
+      color: var(--text-tertiary);
+      margin-top: 2px;
+    }
+
+    .pdf-arrow {
+      font-size: 14px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* No-report notice */
+    .no-report {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 0 2.5rem;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-tertiary);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 500px) {
+      .container { padding: 0 1.25rem; }
+      nav .inner { padding: 0 1.25rem; }
+      .hero { padding: 2.5rem 0 2rem; }
+      .media-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="inner">
+      <a class="nav-logo" href="https://anav512.github.io">anav512.github.io</a>
+      <a class="nav-back" href="https://anav512.github.io">← back</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- ══════════════════════════════════════════
+         HERO
+         • Replace "Project Title" with the project name
+         • Replace the tag text (e.g. "Research", "Academic", "Individual")
+         • Replace the date range
+         • Replace the role line, or delete it if not applicable
+    ═══════════════════════════════════════════ -->
+    <div class="hero">
+      <div class="hero-meta">
+        <span class="hero-tag">Research</span>          <!-- e.g. Research / Academic / Individual -->
+        <span class="hero-date">May 2026 - Present</span>   <!-- date range -->
+      </div>
+      <h1>Project Title</h1>
+      <p class="hero-role">Undergraduate Research Assistant · Monolithic Systems Lab, UIUC</p>  <!-- delete if not applicable -->
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         SECTION 1 — DESCRIPTION & SCOPE
+         • Replace the placeholder paragraphs with your own text
+         • Add or remove <p> tags as needed
+    ═══════════════════════════════════════════ -->
+    <section id="description">
+      <p class="section-label">Description &amp; Scope</p>
+      <div class="description-block">
+        <p>
+          Brief overview of the project — what problem it addresses and why it matters.
+          Keep this to 2–3 sentences so the reader immediately understands the context.
+        </p>
+        <p>
+          Describe the scope: what was your specific role, what methods or tools did you use,
+          and what were the key deliverables or outcomes? Quantify results where possible
+          (e.g. "reduced thermal demand by 30%").
+        </p>
+        <!-- Add more <p> blocks as needed -->
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         SECTION 2 — MEDIA
+         Three slot types are provided below. Use whichever apply and delete the rest.
+
+         SLOT A — Static image
+           Replace "your-image.jpg" with the path to your image file.
+
+         SLOT B — Local video
+           Replace "your-video.mp4" with the path to your video file.
+           The <source> tag supports mp4, webm, ogg.
+
+         SLOT C — YouTube / iframe embed
+           Replace the src URL with your YouTube embed URL.
+           Format: https://www.youtube.com/embed/VIDEO_ID
+
+         Add class="full" to .media-item to make it span the full width.
+         Add a <p class="media-caption"> inside the card for a caption.
+
+         Delete this entire section if there is no media.
+    ═══════════════════════════════════════════ -->
+    <section id="media">
+      <p class="section-label">Media</p>
+      <div class="media-grid">
+
+        <!-- SLOT A: Image -->
+        <div class="media-item">
+          <img src="your-image.jpg" alt="Description of image" />
+          <p class="media-caption">Caption for this image.</p>
+        </div>
+
+        <!-- SLOT B: Local video -->
+        <div class="media-item">
+          <video controls>
+            <source src="your-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <p class="media-caption">Caption for this video.</p>
+        </div>
+
+        <!-- SLOT C: YouTube embed (full width) -->
+        <div class="media-item full">
+          <div class="embed-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/VIDEO_ID"
+              title="Video title"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+          <p class="media-caption">Caption for this video.</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════
+         SECTION 3 — REPORT (PDF)
+         Option A: Link to a PDF — replace href and the title/subtitle text.
+           If the PDF is in the same repo, use a relative path: href="report.pdf"
+           If it's hosted elsewhere, use the full URL.
+
+         Option B: No report — delete the <a> card and uncomment the <p> below.
+
+         Delete this entire section if not needed.
+    ═══════════════════════════════════════════ -->
+    <section id="report">
+      <p class="section-label">Report</p>
+
+      <!-- Option A: PDF link -->
+      <a class="pdf-card" href="report.pdf" target="_blank" rel="noopener">
+        <div class="pdf-card-left">
+          <span class="pdf-icon">⬡</span>
+          <div>
+            <p class="pdf-title">Project Report.pdf</p>          <!-- rename to your file -->
+            <p class="pdf-subtitle">Full technical report · PDF</p>
+          </div>
+        </div>
+        <span class="pdf-arrow">↗</span>
+      </a>
+
+      <!-- Option B: No report (uncomment if needed)
+      <p class="no-report">No written report for this project.</p>
+      -->
+
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      built with github pages · © 2025
+    </div>
+  </footer>
+
+</body>
+</html>
