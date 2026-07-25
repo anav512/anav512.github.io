@@ -686,7 +686,7 @@
     <!-- ── Section Divider ── -->
     <hr class="section-divider" />
 
-    <!-- ── Older Projects / Publications ── -->
+    <!-- ── Older Projects AND Publications ── -->
     <section id="older-projects">
       <p class="section-label" style="text-align: center;">Older Projects</p>
 
@@ -698,6 +698,16 @@
       <!-- Walking Stick - opens modal -->
       <div style="text-align: center; padding: 1rem;">
         <a class="plain-project-link" style="cursor: pointer; font-size: 13px;" data-modal="walking-stick">Sensor Enabled Walking Stick</a>
+      </div>
+      
+      <!-- Ion Propulsion - opens modal -->
+      <div style="text-align: center; padding: 1rem;">
+        <a class="plain-project-link" style="cursor: pointer; font-size: 13px;" data-modal="ion-propulsion">Ion Propulsion</a>
+      </div>
+
+       <!-- Assisted Living - opens modal -->
+      <div style="text-align: center; padding: 1rem;">
+        <a class="plain-project-link" style="cursor: pointer; font-size: 13px;" data-modal="assisted-living">Assisted Living</a>
       </div>
     </section>
 
@@ -717,17 +727,12 @@
 
       <div class="modal-item">
         <span class="modal-label">Description</span>
-        <span class="modal-value">Design and build an autonomous rover for NASA's Human Exploratory Rover Challenge.</span>
-      </div>
-
-      <div class="modal-item">
-        <span class="modal-label">Role</span>
-        <span class="modal-value">Team Project · Robotics Competition</span>
+        <span class="modal-value">Built a manned rover for NASA's Human Exploratory Rover Challenge.</span>
       </div>
 
       <div class="modal-item">
         <span class="modal-label">GitHub</span>
-        <a class="modal-link" href="https://anav512.github.io/nherc" target="_blank">View on GitHub</a>
+        <a class="modal-link" href="https://anav512.github.io/nherc" target="_blank"Details</a>
       </div>
     </div>
   </div>
@@ -740,18 +745,51 @@
 
       <div class="modal-item">
         <span class="modal-label">Description</span>
-        <span class="modal-value">An IoT-enabled walking stick with embedded sensors for fall detection and location tracking.</span>
+        <span class="modal-value">A walking stick enabled with ultrasonic proximity sensors and buzzers to warn the visually challenged about obstacles.</span>
       </div>
 
       <div class="modal-item">
         <span class="modal-label">Technologies</span>
-        <span class="modal-value">Arduino, IoT, Sensor Integration</span>
+        <span class="modal-value">Arduino UNO, HC SRO4 ultrasonic sensor, buzzer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ion Propulsion Modal -->
+  <div class="modal" id="ion-propulsion-modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="ion-propulsion">&times;</button>
+      <h2 class="modal-title">Ion Propulsion</h2>
+
+      <div class="modal-item">
+        <span class="modal-label">Description</span>
+        <span class="modal-value">A study comparing ion and chemical based propulsion systems</span>
       </div>
 
       <div class="modal-item">
-        <span class="modal-label">GitHub</span>
-        <a class="modal-link" href="https://github.com/anav512" target="_blank">View on GitHub</a>
+        <span class="modal-label">Publication</span>
+        <a class="modal-link" href="https://www.journalofyoungphysicists.org/post/ion-and-chemical-propulsion-a-study" target="_blank"Details</a>
       </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- Assisted Living Modal -->
+  <div class="modal" id="assisted-living-modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="assisted-living">&times;</button>
+      <h2 class="modal-title">Assisted Living</h2>
+
+      <div class="modal-item">
+        <span class="modal-label">Description</span>
+        <span class="modal-value">A review paper on assisted living using sensor based ambient intelligence</span>
+      </div>
+
+      <div class="modal-item">
+        <span class="modal-label">Publication</span>
+        <a class="modal-link" href="https://journal.ijresm.com/index.php/ijresm/article/view/2368" target="_blank"Details</a>
+      </div>
+    </div>
     </div>
   </div>
 
