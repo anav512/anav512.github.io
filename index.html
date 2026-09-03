@@ -109,7 +109,7 @@
 
     .hero-bio {
       font-size: 13px;
-      color: var(--text-secondary);
+      color: var(--text-primary);
       line-height: 1.85;
       max-width: 540px;
       margin: 0 auto;
@@ -130,7 +130,8 @@
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-tertiary);
+      color: var(--text-secondary);
+      font-weight: 600;
       margin-bottom: 1.25rem;
     }
 
@@ -191,7 +192,7 @@
 
     .project-date {
       font-size: 11px;
-      color: var(--text-tertiary);
+      color: var(--text-primary);
       white-space: nowrap;
       flex-shrink: 0;
       padding-top: 2px;
@@ -229,7 +230,7 @@
     }
 
     .plain-project-link {
-      color: var(--text-secondary);
+      color: var(--text-primary);
       text-decoration: none;
       border-bottom: 0.5px solid transparent;
       transition: color 0.2s, border-color 0.2s;
@@ -439,6 +440,18 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── Footer Robot ── */
+    .footer-robot {
+      display: inline-block;
+      margin-left: 0.5rem;
+      animation: robot-bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes robot-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
     /* ── Swimming Emoji ── */
     .swimming-emoji {
       display: inline-block;
@@ -526,9 +539,10 @@
       <h1>Anav <em>Vaidya</em><span class="waving-hand">👋</span></h1>
       <p class="section-label">About</p>
       <p class="hero-bio">
-        I am a senior majoring in Systems Engineering &amp; Design at the University of Illinois Urbana-Champaign, with an interest in the control and monitoring of complex systems. Relevant coursework includes control theory, engineering design &amp; validation, signal processing, and robot control.<br><br>
-        This interest has led me to work with the Monolithic Systems Lab at UIUC, where I am applying engineering design principles to assistive technology research, designing a soft robotic shower system for individuals with limited mobility.<br><br>
-        In addition, I have also explored the field of power and sustainable energy through my involvement in the Illini Solar Car Team and an independent study on power-grid optimization.
+        I am a senior majoring in Systems Engineering &amp; Design at the University of Illinois Urbana-Champaign, with an interest in <span style="color: var(--accent);">the control and monitoring of complex systems</span>. Relevant coursework includes control theory, engineering design &amp; validation, signal processing, and robot control.<br><br>
+        This interest has led me to work with the Monolithic Systems Lab at UIUC, where I am applying engineering design principles to <span style="color: var(--accent);">assistive technology research</span>, designing a soft robotic shower system for individuals with limited mobility.<br><br>
+        In addition, I have also explored the field of <span style="color: var(--accent);">power and sustainable energy</span> through my involvement in the Illini Solar Car Team and an independent study on power-grid optimization.<br><br>
+        Outside of these interests, I enjoy sports like tennis, swimming and cricket.
       </p>
     </section>
 
@@ -798,7 +812,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Anav Vaidya
+      © 2026 Anav Vaidya <span class="footer-robot">🤖</span>
     </div>
   </footer>
 
